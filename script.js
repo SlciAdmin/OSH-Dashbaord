@@ -32,10 +32,10 @@ const DL = {
 };
 
 const FORMS_DATA = [
-  {n:"I",d:"Application for Registration of Establishment"},
-  {n:"II",d:"Notice of Closure / Cessation of Operations"},
+  {n:"I",d:"Application for registration of establishment/Amendment to certificate of registration/Updation of registration particulars of establishments already registered under any other Central Labour Laws"},
+  {n:"II",d:"Application for cancellation of Registration Certificate of Establishment"},
   {n:"III",d:"Certificate of Registration of Establishment"},
-  {n:"IV",d:"Cancellation of Certificate of Registration"},
+  {n:"IV",d:"Certificate of cancellation of Registration Certificate of Establishment"},
   {n:"V",d:"Register of Registered Establishments"},
   {n:"VI",d:"Notice of Commencement/Cessation (Contract/Construction)"},
   {n:"VII",d:"Notice of Commencement/Closure for Mines"},
