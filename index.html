@@ -3,195 +3,252 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OSH (Central) Rules 2026 — Full Compliance Dashboard</title>
+  <title>OSH Code 2020 — Complete Compliance Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 
+<!-- ANIMATED BG -->
+<div class="bg-canvas">
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+  <div class="bg-grid"></div>
+</div>
+
 <!-- HEADER -->
 <div class="hdr">
   <div class="hdr-inner">
     <div class="hdr-logo">
-      <div class="hdr-icon">⚖️</div>
+      <div class="hdr-icon">🛡️</div>
       <div class="hdr-text">
-        <h1>OSH (Central) Rules, 2026 — Factory Compliance Dashboard</h1>
-        <p>Ministry of Labour & Employment · G.S.R. 345(E) · OSH Code 2020 (37 of 2020)</p>
+        <h1>Occupational Safety, Health & Working Conditions Code, 2020</h1>
+        <p>Act No. 37 of 2020 · Ministry of Labour & Employment · Consolidating 13 Earlier Labour Laws</p>
       </div>
     </div>
     <div class="hdr-right">
-      <span class="badge bg-gold">Notified: 8 May 2026</span>
-      <span class="badge bg-green">182 Rules</span>
-      <span class="badge bg-blue">27 Forms</span>
-      <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">☀️ Light Mode</button>
+      <span class="badge bg-gold">Enacted: 28 Sep 2020</span>
+      <span class="badge bg-green">143 Sections</span>
+      <span class="badge bg-blue">3 Schedules</span>
+      <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">☀️ Light</button>
       <button class="btn-cal" onclick="openCal()">📅 Calendar</button>
     </div>
   </div>
   <div class="sub-bar">
     <div class="sub-inner">
-      <div class="sub-item">📰 Gazette: <strong>G.S.R. 345(E) · No. 311</strong></div>
-      <div class="sub-item">📑 Draft: <strong>30 Dec 2025</strong></div>
-      <div class="sub-item">🏛️ Supersedes: <strong>15 Earlier Rules</strong></div>
-      <div class="sub-item">📚 Chapters: <strong>XV</strong></div>
+      <div class="sub-item">📚 Chapters: <strong>XIV</strong></div>
+      <div class="sub-item">📋 Central Rules: <strong>182 Rules (OSH Rules 2026)</strong></div>
+      <div class="sub-item">📄 Forms: <strong>27 Prescribed Forms</strong></div>
+      <div class="sub-item">🏭 Coverage: <strong>Factories · Mines · Construction · Plantations · Dock Work · Contract Labour</strong></div>
       <div class="sub-item">⏰ Annual Return: <strong>By 28/29 Feb each year</strong></div>
       <div class="sub-item">💾 Records: <strong>5 Years minimum</strong></div>
-      <div class="sub-item">🏭 Factory = <strong>10+ workers (with power) / 20+ (without power)</strong></div>
+      <div class="sub-item">🏭 Factory: <strong>20+ workers (with power) / 40+ (without power)</strong></div>
     </div>
   </div>
 </div>
 
 <!-- TABS -->
 <div class="tab-bar">
-  <button class="tab active" onclick="showTab('overview',this)">📊 Charts & Overview</button>
-  <button class="tab" onclick="showTab('factory',this)">🏭 Factory Compliance</button>
-  <button class="tab" onclick="showTab('rules',this)">📋 All 182 Rules</button>
+  <button class="tab active" onclick="showTab('overview',this)">📊 Overview</button>
+  <button class="tab" onclick="showTab('code',this)">📜 Code Sections</button>
+  <button class="tab" onclick="showTab('employer',this)">🏭 Employer Compliance</button>
+  <button class="tab" onclick="showTab('rules',this)">📋 OSH Rules 2026</button>
   <button class="tab" onclick="showTab('forms',this)">📄 27 Forms</button>
+  <button class="tab" onclick="showTab('schedules',this)">📑 Schedules</button>
   <button class="tab" onclick="showTab('timeline',this)">⏱️ Timeline</button>
 </div>
 
 <!-- STATS -->
 <div class="stats">
-  <div class="scard"><div class="snum" id="s1">0</div><div class="slabel">Total Rules</div><div class="ssub">Under OSH Code 2020</div></div>
-  <div class="scard"><div class="snum" id="s2">0</div><div class="slabel">Forms Prescribed</div><div class="ssub">FORM-I to FORM-XXVII</div></div>
-  <div class="scard"><div class="snum" id="s3">0</div><div class="slabel">Chapters</div><div class="ssub">I through XV</div></div>
-  <div class="scard"><div class="snum" id="s4">0</div><div class="slabel">Factory-Specific</div><div class="ssub">Compliance Rules</div></div>
-  <div class="scard"><div class="snum" id="s5">0</div><div class="slabel">Gazette Pages</div><div class="ssub">Official Gazette No. 311</div></div>
-  <div class="scard"><div class="snum" id="s6">0</div><div class="slabel">Yrs Retention</div><div class="ssub">Minimum Record Keeping</div></div>
+  <div class="scard"><div class="snum" id="s1">0</div><div class="slabel">Code Sections</div><div class="ssub">143 Sections · 14 Chapters</div></div>
+  <div class="scard"><div class="snum" id="s2">0</div><div class="slabel">OSH Rules 2026</div><div class="ssub">182 Rules · 8 May 2026</div></div>
+  <div class="scard"><div class="snum" id="s3">0</div><div class="slabel">Prescribed Forms</div><div class="ssub">FORM-I to FORM-XXVII</div></div>
+  <div class="scard"><div class="snum" id="s4">0</div><div class="slabel">Earlier Laws Repealed</div><div class="ssub">Consolidated under OSH Code</div></div>
+  <div class="scard"><div class="snum" id="s5">0</div><div class="slabel">Hazardous Industries</div><div class="ssub">First Schedule — List</div></div>
+  <div class="scard"><div class="snum" id="s6">0</div><div class="slabel">Notifiable Diseases</div><div class="ssub">Third Schedule</div></div>
 </div>
 
 <!-- ======== TAB: OVERVIEW ======== -->
 <div id="panel-overview" class="panel active">
 <div class="mgrid">
-
-  <!-- Donut: Category -->
   <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--blue2)"></div>Rules by Category</div><span style="font-size:10px;color:var(--text3);">With % Share</span></div>
-    <div class="cbody">
-      <canvas id="catChart"></canvas>
-      <div class="legend" id="catLegend"></div>
-    </div>
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--blue2)"></div>Sections by Chapter</div><span class="ch-sub">14 Chapters · 143 Sections</span></div>
+    <div class="cbody"><canvas id="chapterChart"></canvas><div class="legend" id="chapterLegend"></div></div>
   </div>
-
-  <!-- Bar: Chapter -->
   <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--teal2)"></div>Rules per Chapter</div><span style="font-size:10px;color:var(--text3);">All 15 Chapters with %</span></div>
-    <div class="cbody">
-      <canvas id="chChart"></canvas>
-    </div>
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--teal2)"></div>Rules Distribution — OSH 2026</div><span class="ch-sub">182 Rules by Category</span></div>
+    <div class="cbody"><canvas id="rulesCatChart"></canvas></div>
   </div>
-
-  <!-- Horizontal Bar: Thresholds -->
   <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--green2)"></div>Factory Threshold Requirements</div><span style="font-size:10px;color:var(--text3);">Worker-count Triggers</span></div>
-    <div class="cbody">
-      <canvas id="threshChart"></canvas>
-    </div>
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--green2)"></div>Factory Threshold Requirements</div><span class="ch-sub">Worker Count Triggers</span></div>
+    <div class="cbody"><canvas id="thresholdChart"></canvas></div>
   </div>
-
-  <!-- Bar: Forms -->
   <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--orange2)"></div>Form Usage Frequency</div><span style="font-size:10px;color:var(--text3);">Rules referencing each form</span></div>
-    <div class="cbody">
-      <canvas id="formChart"></canvas>
-    </div>
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--orange2)"></div>Compliance Coverage — Radar</div><span class="ch-sub">By Functional Area</span></div>
+    <div class="cbody"><canvas id="radarChart"></canvas></div>
   </div>
-
-  <!-- Radar -->
   <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--purple2)"></div>Compliance Coverage — Radar</div><span style="font-size:10px;color:var(--text3);">Factory vs General Rules</span></div>
-    <div class="cbody">
-      <canvas id="radarChart"></canvas>
-    </div>
-  </div>
-
-  <!-- Pie: Scope -->
-  <div class="card">
-    <div class="ch"><div class="ct"><div class="dot" style="background:var(--pink2)"></div>Rule Scope Breakdown</div><span style="font-size:10px;color:var(--text3);">Factory / Mine / General</span></div>
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--purple2)"></div>Rule Scope Breakdown</div><span class="ch-sub">Factory / Mine / General</span></div>
     <div class="cbody">
       <canvas id="scopeChart"></canvas>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px;">
-        <div style="text-align:center;padding:10px;background:var(--bg2);border-radius:9px;border:1px solid var(--border);">
-          <div style="font-size:26px;font-weight:800;color:var(--blue3);">36</div>
-          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;font-weight:700;margin-top:2px;">Factory Rules</div>
-        </div>
-        <div style="text-align:center;padding:10px;background:var(--bg2);border-radius:9px;border:1px solid var(--border);">
-          <div style="font-size:26px;font-weight:800;color:var(--green2);">84</div>
-          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;font-weight:700;margin-top:2px;">Mine/Rescue</div>
-        </div>
-        <div style="text-align:center;padding:10px;background:var(--bg2);border-radius:9px;border:1px solid var(--border);">
-          <div style="font-size:26px;font-weight:800;color:var(--gold);">62</div>
-          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;font-weight:700;margin-top:2px;">General/All</div>
-        </div>
+        <div class="rate-box"><div class="rate-num" style="color:var(--blue3);">36</div><div class="rate-lbl">Factory Rules</div></div>
+        <div class="rate-box"><div class="rate-num" style="color:var(--green2);">84</div><div class="rate-lbl">Mine/Rescue</div></div>
+        <div class="rate-box"><div class="rate-num" style="color:var(--gold);">62</div><div class="rate-lbl">General/All</div></div>
       </div>
     </div>
   </div>
-
+  <div class="card">
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--pink2)"></div>Forms Usage Frequency</div><span class="ch-sub">Rules referencing each form</span></div>
+    <div class="cbody"><canvas id="formChart"></canvas></div>
+  </div>
 </div>
-</div><!-- end overview -->
+</div>
 
-<!-- ======== TAB: FACTORY ======== -->
-<div id="panel-factory" class="panel">
+<!-- ======== TAB: CODE SECTIONS ======== -->
+<div id="panel-code" class="panel">
 <div style="max-width:1800px;margin:0 auto;padding:18px 24px 60px;">
-  <div id="factorySections"></div>
+<div class="card">
+<div class="ch">
+  <div class="ct"><div class="dot" style="background:var(--gold)"></div>OSH Code 2020 — All 143 Sections</div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <span id="sectionCount" class="ch-sub"></span>
+    <button onclick="exportCodeCSV()" class="export-btn">⬇ Export CSV</button>
+  </div>
+</div>
+<div class="toolbar">
+  <div class="srch"><input type="text" id="codeSrch" placeholder="Search Section, Title, Chapter, Keywords..." oninput="filterCode()"></div>
+  <button class="fbtn on" onclick="setCodeFilt('all',this)">All</button>
+  <button class="fbtn" onclick="setCodeFilt('I',this)">Ch. I (Preliminary)</button>
+  <button class="fbtn" onclick="setCodeFilt('II',this)">Ch. II (Registration)</button>
+  <button class="fbtn" onclick="setCodeFilt('III',this)">Ch. III (Duties)</button>
+  <button class="fbtn" onclick="setCodeFilt('IV',this)">Ch. IV (OSH)</button>
+  <button class="fbtn" onclick="setCodeFilt('V',this)">Ch. V (Health)</button>
+  <button class="fbtn" onclick="setCodeFilt('VI',this)">Ch. VI (Welfare)</button>
+  <button class="fbtn" onclick="setCodeFilt('VII',this)">Ch. VII (Hours)</button>
+  <button class="fbtn" onclick="setCodeFilt('VIII',this)">Ch. VIII (Records)</button>
+  <button class="fbtn" onclick="setCodeFilt('IX',this)">Ch. IX (Inspectors)</button>
+  <button class="fbtn" onclick="setCodeFilt('XI',this)">Ch. XI (Contract)</button>
+  <button class="fbtn" onclick="setCodeFilt('XII',this)">Ch. XII (Offences)</button>
+</div>
+<div class="twrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="min-width:70px;">Sec.</th>
+        <th style="min-width:80px;">Chapter</th>
+        <th style="min-width:260px;">Section Title</th>
+        <th>Key Provision</th>
+        <th style="min-width:130px;">Applicability</th>
+        <th style="min-width:160px;">Linked Rules</th>
+        <th style="min-width:160px;">Linked Forms</th>
+      </tr>
+    </thead>
+    <tbody id="codeTbody"></tbody>
+  </table>
+</div>
+<div class="pager"><span id="codePageInfo"></span><div class="pbtns" id="codePageBtns"></div></div>
+</div>
+</div>
+</div>
 
-  <!-- Summary Table -->
+<!-- ======== TAB: EMPLOYER ======== -->
+<div id="panel-employer" class="panel">
+<div style="max-width:1800px;margin:0 auto;padding:18px 24px 60px;">
+  <div id="employerSections"></div>
   <div class="card full" style="margin-top:20px;">
     <div class="ch">
-      <div class="ct"><div class="dot" style="background:var(--gold)"></div>Factory Compliance Quick Reference (35 Rules)</div>
-      <button onclick="exportFactCSV()" style="padding:5px 11px;border-radius:6px;border:1px solid var(--border2);background:var(--bg2);color:var(--text3);font-size:10px;">⬇ Export CSV</button>
+      <div class="ct"><div class="dot" style="background:var(--gold)"></div>Employer Compliance Quick Reference</div>
+      <button onclick="exportFactCSV()" class="export-btn">⬇ Export CSV</button>
     </div>
     <div class="twrap">
       <table>
-        <thead><tr><th>Rule</th><th>Compliance Area</th><th>Threshold</th><th>Key Requirement</th><th>Forms</th></tr></thead>
+        <thead><tr><th>Section</th><th>Rule</th><th>Compliance Area</th><th>Threshold</th><th>Key Requirement</th><th>Forms</th></tr></thead>
         <tbody id="factTbody"></tbody>
       </table>
     </div>
   </div>
 </div>
-</div><!-- end factory -->
+</div>
 
 <!-- ======== TAB: RULES ======== -->
 <div id="panel-rules" class="panel">
 <div style="max-width:1800px;margin:0 auto;padding:18px 24px 60px;">
 <div class="card">
   <div class="ch">
-    <div class="ct"><div class="dot" style="background:var(--gold)"></div>All 182 Rules — Complete Reference</div>
+    <div class="ct"><div class="dot" style="background:var(--gold)"></div>OSH (Central) Rules, 2026 — All 182 Rules</div>
     <div style="display:flex;gap:8px;align-items:center;">
-      <span id="rowCount" style="font-size:10px;color:var(--text3);"></span>
-      <button onclick="exportCSV()" style="padding:5px 11px;border-radius:6px;border:1px solid var(--border2);background:var(--bg2);color:var(--text3);font-size:10px;">⬇ Export CSV</button>
+      <span id="rowCount" class="ch-sub"></span>
+      <button onclick="exportCSV()" class="export-btn">⬇ Export CSV</button>
     </div>
   </div>
   <div class="toolbar">
-    <div class="srch"><input type="text" id="srchInp" placeholder="Search Rule No, Title, Form, Category..." oninput="doFilter()"></div>
+    <div class="srch"><input type="text" id="srchInp" placeholder="Search Rule No, Title, Category..." oninput="doFilter()"></div>
     <button class="fbtn on" onclick="setFilt('all',this)">All</button>
-    <button class="fbtn" onclick="setFilt('Health',this)">Health</button>
+    <button class="fbtn" onclick="setFilt('Health',this)">Health & Safety</button>
     <button class="fbtn" onclick="setFilt('Welfare',this)">Welfare</button>
     <button class="fbtn" onclick="setFilt('Mine',this)">Mine</button>
-    <button class="fbtn" onclick="setFilt('Contract',this)">Contract</button>
-    <button class="fbtn" onclick="setFilt('Working',this)">Working Hrs</button>
+    <button class="fbtn" onclick="setFilt('Contract',this)">Contract Labour</button>
+    <button class="fbtn" onclick="setFilt('Working',this)">Working Hours</button>
     <button class="fbtn" onclick="setFilt('Records',this)">Records</button>
     <button class="fbtn" onclick="setFilt('Registration',this)">Registration</button>
+    <button class="fbtn" onclick="setFilt('Rescue',this)">Mine Rescue</button>
   </div>
   <div class="twrap">
     <table>
-      <thead><tr><th>Rule No.</th><th>Chapter</th><th>Title</th><th>Forms</th><th>Category</th><th>Date</th></tr></thead>
+      <thead><tr><th>Rule No.</th><th>Chapter</th><th>Title</th><th>Forms</th><th>Category</th><th>Section Ref</th><th>Date</th></tr></thead>
       <tbody id="rulesTbody"></tbody>
     </table>
   </div>
   <div class="pager"><span id="pageInfo"></span><div class="pbtns" id="pageBtns"></div></div>
 </div>
 </div>
-</div><!-- end rules -->
+</div>
 
 <!-- ======== TAB: FORMS ======== -->
 <div id="panel-forms" class="panel">
 <div style="max-width:1800px;margin:0 auto;padding:18px 24px 60px;">
-<div class="card">
-  <div class="ch"><div class="ct"><div class="dot" style="background:var(--teal2)"></div>All 27 Prescribed Forms — FORM-I to FORM-XXVII</div><span style="font-size:10px;color:var(--text3);">Click to open PDF on Google Drive</span></div>
-  <div class="fgrid" id="formsGrid"></div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ch">
+      <div class="ct"><div class="dot" style="background:var(--teal2)"></div>All 27 Prescribed Forms — FORM-I to FORM-XXVII</div>
+      <span class="ch-sub">OSH (Central) Rules, 2026 · Click any card to open PDF</span>
+    </div>
+    <div class="toolbar">
+      <div class="srch"><input type="text" id="formSrch" placeholder="Search Form No, title, category..." oninput="filterForms()"></div>
+      <button class="fbtn on" onclick="setFormFilt('all',this)">All (27)</button>
+      <button class="fbtn" onclick="setFormFilt('Registration',this)">Registration</button>
+      <button class="fbtn" onclick="setFormFilt('Health',this)">Health</button>
+      <button class="fbtn" onclick="setFormFilt('Accident',this)">Accident</button>
+      <button class="fbtn" onclick="setFormFilt('Records',this)">Records</button>
+      <button class="fbtn" onclick="setFormFilt('Contract',this)">Contract</button>
+      <button class="fbtn" onclick="setFormFilt('Welfare',this)">Welfare</button>
+      <button class="fbtn" onclick="setFormFilt('Compliance',this)">Compliance</button>
+    </div>
+  </div>
+  <div id="formsGrid" class="forms-master-grid"></div>
 </div>
 </div>
-</div><!-- end forms -->
+
+<!-- ======== TAB: SCHEDULES ======== -->
+<div id="panel-schedules" class="panel">
+<div style="max-width:1400px;margin:0 auto;padding:18px 24px 60px;">
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--red2)"></div>First Schedule — Hazardous Process Industries (40 Categories)</div></div>
+    <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;" id="sched1Grid"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ch"><div class="ct"><div class="dot" style="background:var(--orange2)"></div>Second Schedule — OSH Standards Matters (73 Items)</div></div>
+    <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;" id="sched2Grid"></div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="dot" style="background:var(--pink2)"></div><div class="ct">Third Schedule — Notifiable Occupational Diseases (29 Diseases)</div></div>
+    <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;" id="sched3Grid"></div>
+  </div>
+</div>
+</div>
 
 <!-- ======== TAB: TIMELINE ======== -->
 <div id="panel-timeline" class="panel">
@@ -201,10 +258,10 @@
   <div class="tl" id="tlContent"></div>
 </div>
 </div>
-</div><!-- end timeline -->
+</div>
 
-<!-- MODAL -->
-<div class="overlay" id="calOverlay" onclick="if(event.target===this)closeCal()">
+<!-- CALENDAR MODAL -->
+<div class="overlay" id="calOverlay" onclick="if(event.target.classList.contains('overlay'))closeCal()">
 <div class="modal">
   <h2>📅 Add to Google Calendar</h2>
   <p>Select compliance deadlines to add to your calendar:</p>
@@ -214,6 +271,14 @@
     <button class="btn-a" onclick="addCal()">Add to Calendar</button>
   </div>
 </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="overlay" id="detailOverlay" onclick="if(event.target.classList.contains('overlay'))closeDetailModal()">
+  <div class="modal detail-modal">
+    <button class="close-modal-btn" onclick="closeDetailModal()">✕</button>
+    <div id="detailContent"></div>
+  </div>
 </div>
 
 <script src="script.js"></script>
